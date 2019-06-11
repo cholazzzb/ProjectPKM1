@@ -1,20 +1,34 @@
-from tkinter import tk # Import Tkinter library into global namespace
-from tkinter.ttk import ttk # imports the ttk or themed Tk widget library
+#### Import Module
+from tkinter import *
 
-# creates root or master application OBJECT (You should only use 1)
+#### Root
 root = Tk()
 
-# Creates a new Label Object to display text or image
-#@param root : parent or master widget which have the label widget
-#@param text : specifies text will be placed in Label object
+#### Root Configuration
+root.title('Smart Plastic Recycler') # GUI Title
+root.configure(background='#FFFFFF') # White Color background
+
+### Button Configuration
+
+### Upper Side
+Label(root, text="Selamat Datand di Smart Plastic Recycler").grid(row=0, column=0, sticky='we')
+
+### Left Side
+
+## Logo
+# OK Logo
+'''
+OK = ImageTk.PhotoImage(Image.open())
+OKpanel = tk.label(root, image=OK)
+panel.grid(row=1, column=0, sticky='w')
+'''
 
 
-# label is an object in the main application window
-label = Label(root, text = "Welcome to Smart Plastic Recycler !!!")
+## Button
+Button(root, text='OK').grid(row=1, column=0, sticky='w')
+Button(root, text='BACK').grid(row=2, column=0, sticky='w')
+Button(root, text='CANCEl').grid(row=3, column=0, sticky='w')
+Button(root, text='HELP').grid(row=4, column=0, sticky='w')
 
-# places the new label widget onto its parent widget (SIMPLEST GEOMETRY MANAGER)
-label.pack()
-
-# Starts mainevent loop. It is responsible for precessing all the events(
-# keystrokes, mouse clicks and it will run until the program is quit
+#### Root Execution
 root.mainloop()
