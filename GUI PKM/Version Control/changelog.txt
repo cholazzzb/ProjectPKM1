@@ -1,0 +1,4 @@
+0.00 - Model kasar
+1.00 - Dibuat struktur Model dengan frame dan grid
+2.00 - Icon dan Gambar terpasang
+3.00 -
