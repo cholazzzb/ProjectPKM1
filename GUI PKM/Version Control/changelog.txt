@@ -1,4 +1,5 @@
 0.00 - Model kasar
 1.00 - Dibuat struktur Model dengan frame dan grid
-2.00 - Icon dan Gambar terpasang
-3.00 -
+1.01 - ++ Fitur" options dari library
+2.00 - Perubahan Struktu menjadi OOP dan Functional Programming
+3.00 - Icon dan Gambar terpasang
