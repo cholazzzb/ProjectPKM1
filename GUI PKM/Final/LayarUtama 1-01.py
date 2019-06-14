@@ -8,9 +8,9 @@ import tkinter.messagebox as tmb # For tkMessageBox
 #from PIL import ImageTk,Image
 
 ### Global Variable
-upper_frame_state = 1;
-left_frame_state = 1;
-right_frame_state = 1;
+upper_frame_state = True;
+left_frame_state = True;
+right_frame_state = True;
 
 #### Root ####
 root = tk.Tk()
@@ -77,16 +77,16 @@ def bantuanCallBack():
 ## OK Icon
 
 # Make the canvas
-#canvas = tk.Canvas(root, width = 50, height = 500, bd=0, bg='#FFFFFF')
-#canvas.grid(row=1, column=0, sticky='we')
+canvas = tk.Canvas(root, width = 50, height = 500, bd=0, bg='#FFFFFF')
+canvas.grid(row=1, column=0, sticky='we')
 
 # Input the image
-#imgOK = tk.PhotoImage(file='OK.gif')
+imgOK = tk.PhotoImage(file='OK.gif')
 #img = tk.PhotoImage(file="Back.gif")
 #img = tk.PhotoImage(file="Cancel.gif")
 #img = tk.PhotoImage(file="Help.gif")
 
-#canvas.create_image(10,10, anchor=NW, image=imgOK)
+canvas.create_image(10,10, anchor=NW, image=imgOK)
 
 ## Temporary Icon ##
 ttk.Label(left_frame, text='OK icon').grid(row=3, column=0, sticky='w')
