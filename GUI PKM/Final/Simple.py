@@ -26,7 +26,7 @@ root.wm_attributes('-fullscreen','true') #fullscreen
 
 # ---------Style-------- #pengaturan ui perlu style, gabisa dikasih argumen langsung di objek
 s = ttk.Style()
-s.configure('white.TFrame', background='white') 
+s.configure('white.TFrame', background='white')
 s.configure('green.TFrame', background='green')
 s.configure('button1.TButton', background='white', font='helvetica 22')
 font_judul = font.Font(family='Helvetica', size=64, weight='bold')#define font style
