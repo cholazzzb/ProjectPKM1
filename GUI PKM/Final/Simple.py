@@ -69,7 +69,9 @@ judul.grid(column=1,row=0)
 spacing=ttk.Frame(frame_logo, width=space_size, style=tes_spacing+'.TFrame')
 spacing.grid(column=2, row=0)
 
-# ---------Frame Buttons----------
+# ---------Frame Buttons Events----------
+
+##  ---------Frame Buttons Events 1----------
 button_ok=ttk.Button(frame_button, text="OK", width=10, style='button1.TButton')
 button_ok.grid(column=0,row=0, pady=pady_button, padx=padx_button)
 button_kembali=ttk.Button(frame_button, text="Kembali", width=10, style='button1.TButton')
@@ -89,6 +91,9 @@ spacing.grid(column=2, row=0, rowspan=4)
 tebal_sisa=lcd_height-logo_size-tebal_garis_pembatas-2*pad_garis-2*4*pady_button-4*10
 frame_sisa=ttk.Frame(frame_button, width=lcd_width, height=tebal_sisa, style=tes_spacing+'.TFrame')
 frame_sisa.grid(column=0, row=4, columnspan=3)
+
+##  ---------Frame Buttons Events 2----------
+##  ---------Frame Buttons Events 3----------
 
 # --------Functions---------
 
