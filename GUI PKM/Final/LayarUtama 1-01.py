@@ -86,7 +86,7 @@ imgOK = tk.PhotoImage(file='OK.gif')
 #img = tk.PhotoImage(file="Cancel.gif")
 #img = tk.PhotoImage(file="Help.gif")
 
-canvas.create_image(10,10, anchor=NW, image=imgOK)
+canvas.create_image(10,10, image=imgOK)
 
 ## Temporary Icon ##
 ttk.Label(left_frame, text='OK icon').grid(row=3, column=0, sticky='w')

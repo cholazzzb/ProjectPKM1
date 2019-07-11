@@ -10,6 +10,7 @@ try:
         print("Silahkan dekatkan kartu anda")
         id, text=reader.read()
         print("ID: %s\nText: %s" % (id,text))
+        print(type(id))
         sleep(5)
 finally:
     GPIO.cleanup()
