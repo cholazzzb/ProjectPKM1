@@ -11,3 +11,6 @@ def show_label(self, event=None):
 
 def hide_label(self, event=None):
     self.label.lower(self.frame)
+
+def xprint():
+    print("Hello World")

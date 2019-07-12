@@ -4,8 +4,8 @@ from firebase import firebase
 SPR = firebase.FirebaseApplication('https://smartplastic-65d5e.firebaseio.com/', None)
 
 # Make the userPath
-user = 'Dartwin'
-userPath = 'Alat1/pengguna/' + user
+id = 264811178633
+userPath = 'Alat1/pengguna/' + id
 
 # Get data to update
 SPRdicOn = SPR.get(userPath, None)
