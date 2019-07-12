@@ -45,7 +45,7 @@ value=5
 
 # --------Frames--------- #frame2 yang dipakai
 
-    #logo
+       #logo
 frame_logo=ttk.Frame(content, width=lcd_width, height=logo_size, style='white.TFrame')
 frame_logo.grid(column=0, row=0, columnspan=3)
 
@@ -73,13 +73,11 @@ logo.grid(column=0,row=0)
 judul = ttk.Label(frame_logo, text='Selamat Datang !!!', font=font_judul, background='white')
 judul.grid(column=1,row=0)
 
+
 spacing=ttk.Frame(frame_logo, width=space_size, style=tes_spacing+'.TFrame')
 spacing.grid(column=2, row=0)
 
-# ---------Frame Buttons Events----------
 
-##  ---------Frame Buttons Events 1----------
-### ---------Frame Buttons Tombol Kiri----------
 button_ok=ttk.Button(frame_button, text="OK", width=10, style='button1.TButton')
 button_ok.grid(column=0,row=0, pady=pady_button, padx=padx_button)
 button_kembali=ttk.Button(frame_button, text="Kembali", width=10, style='button1.TButton')
@@ -92,14 +90,19 @@ button_bantuan.grid(column=0,row=3, pady=pady_button, padx=padx_button)
 
 ###---------Frame Buttons Fungsional----------
 button_checkRFID=ttk.Button(frame_label, text="Cek Kartu Saya", width=20, style='button1.TButton', command=lambda :SPRRFID.checkId() )
-button_checkRFID.grid(column=1, row=3, pady=pady_button, padx=padx_button)
+button_checkRFID.grid(column=0, row=2, pady=pady_button, padx=padx_button)
 
-#spacing=ttk.Frame(frame_button, width=space_size, style=tes_spacing+'.TFrame')
-#spacing.grid(column=2, row=0, rowspan=4)
+
+
+###---------Frame Pengisi Space Kosong biar fullscreen----------
+spacing=ttk.Frame(content, width=space_size, style=tes_spacing+'.TFrame')
+spacing.grid(column=3, row=0, rowspan=4)
+
 
 tebal_sisa=lcd_height-logo_size-tebal_garis_pembatas-2*pad_garis-2*4*pady_button-4*10
-frame_sisa=ttk.Frame(frame_button, width=lcd_width, height=tebal_sisa, style=tes_spacing+'.TFrame')
+frame_sisa=ttk.Frame(content, width=lcd_width, height=tebal_sisa, style=tes_spacing+'.TFrame')
 frame_sisa.grid(column=0, row=4, columnspan=3)
+
 
 ##  ---------Frame Buttons Events 2----------
 ##  ---------Frame Buttons Events 3----------
@@ -108,3 +111,4 @@ frame_sisa.grid(column=0, row=4, columnspan=3)
 
 # ---------Execution----------
 root.mainloop()
+
