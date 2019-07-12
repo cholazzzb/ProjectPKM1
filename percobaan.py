@@ -1,7 +1,7 @@
 # File percobaan
 
 import sys
-import firebase
+from firebase import firebase
 from time import sleep
 import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
