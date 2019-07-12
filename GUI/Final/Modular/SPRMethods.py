@@ -16,9 +16,20 @@ def hide_button(event):
 def xprint():
     print("Hello World")
     
-    
+# -----Meremukan botol-----
+#def remuk():
+ 
+ 
+# -----Mencek Volume Sisa Wadah-----
+#def cekVolume():
     
 ### Kedepannya keliatannya ini ditaro di SPRGUI.py
 #----- Event State 2
-#def s2_OK():
+    
+## -- Remove button function
+def s2_ok():
+    button_ok.grid_remove()
+    button_kembali.grid_remove()
+    button_batal.grid_remove()
+    button_bantuan.grid_remove()
     

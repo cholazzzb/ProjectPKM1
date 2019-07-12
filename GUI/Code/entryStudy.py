@@ -36,16 +36,34 @@ s.configure('button1.TButton', background='white', font='helvetica 22')
 font_judul = font.Font(family='Helvetica', size=64, weight='bold')#define font style
 
 #--------Mainframe-------- #inisiasi frame utama
-def mainFrame():
-    content=ttk.Frame(root, style='blue.TFrame')
-    content.grid(column=0, row=0)
+content=ttk.Frame(root, style='blue.TFrame')
+content.grid(column=0, row=0)
+
+# ---------Variables---------- #to be used later
+d_id = '12312312'
+d_nama = 'Nic'
+d_saldo = '75000'
+d_jenisBotol = 'Botol Besar'
+d_saldoTambahan = 'Rp 150'
+d_saldoAkhir = '75150'
+
+v_id = tk.StringVar()
+v_nama = tk.StringVar()
+v_saldo = tk.StringVar()
+v_jenisBotol = tk.StringVar()
+v_saldoTambahan = tk.StringVar()
+v_saldoAkhir = tk.StringVar()
+
+# temp
+v_id.set("Id = " + d_id)
+v_nama.set("Nama = " + d_nama)
+v_saldo.set("Saldo = " + d_saldo)
 
 # --------Frames--------- #frame2 yang dipakai
 
-#logo
-def buildLogo():    
-    frame_logo=ttk.Frame(content, width=lcd_width, height=logo_size, style='white.TFrame')
-    frame_logo.grid(column=0, row=0, columnspan=3)
+    #logo
+frame_logo=ttk.Frame(content, width=lcd_width, height=logo_size, style='white.TFrame')
+frame_logo.grid(column=0, row=0, columnspan=3)
 
     #garis ijo pembatas
 frame_garis=ttk.Frame(content, width=lcd_width, height=tebal_garis_pembatas, style='green.TFrame')
@@ -70,7 +88,6 @@ logo = ttk.Label(frame_logo, image=logo_file, background='white')
 logo.grid(column=0,row=0)
 '''
 
-'''
 judul = ttk.Label(frame_logo, text='Selamat Datang !!!', font=font_judul, background='white')
 judul.grid(column=1,row=0)
 
@@ -125,4 +142,5 @@ frame_sisa.grid(column=0, row=4, columnspan=3)
 
 # ---------Execution----------
 root.mainloop()
+
 

@@ -186,3 +186,4 @@ button_mulai.grid(column=0,row=0, pady=pady_button, padx=padx_button)
 
 root.mainloop()
 
+

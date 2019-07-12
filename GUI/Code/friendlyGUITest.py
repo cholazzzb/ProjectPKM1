@@ -39,6 +39,12 @@ font_judul = font.Font(family='Helvetica', size=64, weight='bold')#define font s
 content=ttk.Frame(root, style='blue.TFrame')
 content.grid(column=0, row=0)
 
+# ------ Global Variable ------
+global button_ok
+global button_kembali
+global button_batal
+global button_bantuan
+
 # ---------Variables---------- #to be used later
 outputData = tk.StringVar()
 value=5
@@ -87,7 +93,7 @@ spacing.grid(column=2, row=0)
 
 ##  ---------Frame Buttons Events 1----------
 ### ---------Frame Buttons Tombol Kiri----------
-button_ok=ttk.Button(frame_button, text="OK", width=10, style='button1.TButton')
+button_ok=ttk.Button(frame_button, text="OK", width=10, style='button1.TButton', command= lambda :SPRMethods.s2_ok() )
 button_kembali=ttk.Button(frame_button, text="Kembali", width=10, style='button1.TButton')
 button_batal=ttk.Button(frame_button, text="Batal", width=10, style='button1.TButton')
 button_bantuan=ttk.Button(frame_button, text="Bantuan", width=10, style='button1.TButton')
@@ -96,13 +102,7 @@ button_bantuan=ttk.Button(frame_button, text="Bantuan", width=10, style='button1
 # Remove function
 
 
-## -- Remove button function
-def s2_ok():
-    
-    button_ok.grid_remove()
-    button_kembali.grid_remove()
-    button_batal.grid_remove()
-    button_bantuan.grid_remove()
+
 
 ## -- Bind execution    
     
@@ -113,7 +113,7 @@ button_batal.grid(column=0,row=2, pady=pady_button, padx=padx_button)
 button_bantuan.grid(column=0,row=3, pady=pady_button, padx=padx_button)
 
 ###---------Frame Buttons Fungsional----------
-button_checkRFID=ttk.Button(frame_label, text="Mulai", width=20, style='button1.TButton', command=lambda :s2_ok() )
+button_checkRFID=ttk.Button(frame_label, text="Mulai", width=20, style='button1.TButton', command=lambda :SPRMethods.s2_ok() )
 button_checkRFID.grid(column=0, row=2, pady=pady_button, padx=padx_button)
 
 
