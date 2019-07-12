@@ -86,13 +86,15 @@ frame_logo.grid(column=0, row=0, columnspan=3)
 frame_garis=ttk.Frame(content, width=lcd_width, height=tebal_garis_pembatas, style='green.TFrame')
 frame_garis.grid(column=0, row=1, columnspan=3, pady=pad_garis)
 
-    #button
-frame_button=ttk.Frame(content, width=420, height=lcd_height-tebal_garis_pembatas-logo_size, style='white.TFrame')
-frame_button.grid(column=0, row=2, columnspan=1)
+#label
+frame_label=ttk.Frame(content, width=lcd_width, height=lcd_height-tebal_garis_pembatas-logo_size-40, style='green.TFrame')
+frame_label.grid(column=0, row=2, columnspan=3)
 
-    #label
-frame_label=ttk.Frame(content, width=lcd_width-420, height=lcd_height-tebal_garis_pembatas-logo_size, style='green.TFrame')
-frame_label.grid(column=1, row=2, columnspan=2)
+#button
+frame_button=ttk.Frame(content, width=lcd_width, height=40, style='white.TFrame')
+frame_button.grid(column=0, row=3, columnspan=3)
+
+
 
 #---------Frame Logo----------
 logo_ori = Image.open("Logo I-Smart Plastic Recycler-Dartwin-ITB.png")#buat logo sesuai keperluan ukuran
@@ -187,3 +189,4 @@ button_mulai.grid(column=0,row=0, pady=pady_button, padx=padx_button)
 root.mainloop()
 
 
+    
