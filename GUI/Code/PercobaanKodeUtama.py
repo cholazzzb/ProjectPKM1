@@ -20,7 +20,7 @@ pad_garis=40
 # ---------Settings--------
 white='#FFFFFF' # variable untuk warna background = putih
 green='#A1FCA3' # variable untuk warna hijau
-blue='#A1FCA5'
+blue='#A1FCA5' 
 root = tk.Tk()
 root.title('Smart Plastic Recycler') # GUI Title
 root.configure(background='#000000') # White Color background
@@ -92,13 +92,15 @@ button_bantuan.grid(column=0,row=3, pady=pady_button, padx=padx_button)
 
 ###---------Frame Buttons Fungsional----------
 button_checkRFID=ttk.Button(frame_label, text="Cek Kartu Saya", width=20, style='button1.TButton', command=lambda :SPRRFID.checkId() )
-button_checkRFID.grid(column=1, row=3, pady=pady_button, padx=padx_button)
+button_checkRFID.grid(column=0, row=2, pady=pady_button, padx=padx_button)
 
-#spacing=ttk.Frame(frame_button, width=space_size, style=tes_spacing+'.TFrame')
-#spacing.grid(column=2, row=0, rowspan=4)
+
+###---------Frame Pengisi Space Kosong biar fullscreen----------
+spacing=ttk.Frame(content, width=space_size, style=tes_spacing+'.TFrame')
+spacing.grid(column=3, row=0, rowspan=4)
 
 tebal_sisa=lcd_height-logo_size-tebal_garis_pembatas-2*pad_garis-2*4*pady_button-4*10
-frame_sisa=ttk.Frame(frame_button, width=lcd_width, height=tebal_sisa, style=tes_spacing+'.TFrame')
+frame_sisa=ttk.Frame(content, width=lcd_width, height=tebal_sisa, style=tes_spacing+'.TFrame')
 frame_sisa.grid(column=0, row=4, columnspan=3)
 
 ##  ---------Frame Buttons Events 2----------
