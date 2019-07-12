@@ -74,6 +74,7 @@ spacing.grid(column=2, row=0)
 # ---------Frame Buttons Events----------
 
 ##  ---------Frame Buttons Events 1----------
+### ---------Frame Buttons Tombol Kiri----------
 button_ok=ttk.Button(frame_button, text="OK", width=10, style='button1.TButton')
 button_ok.grid(column=0,row=0, pady=pady_button, padx=padx_button)
 button_kembali=ttk.Button(frame_button, text="Kembali", width=10, style='button1.TButton')
@@ -83,11 +84,10 @@ button_batal.grid(column=0,row=2, pady=pady_button, padx=padx_button)
 button_bantuan=ttk.Button(frame_button, text="Bantuan", width=10, style='button1.TButton')
 button_bantuan.grid(column=0,row=3, pady=pady_button, padx=padx_button)
 
-button_checkRFID=ttk.Button(frame_button, text="Cek Kartu Saya", width=20, style='button1.TButton')
 
-font_arahan = font.Font(family='Helvetica', size=24)
-arahan=ttk.Label(frame_button, text="Silahkan Tempelkan KTP Anda", font=font_arahan, background='white')
-arahan.grid(column=1,row=0, rowspan=4)
+###---------Frame Buttons Fungsional----------
+button_checkRFID=ttk.Button(frame_button, text="Cek Kartu Saya", width=20, style='button1.TButton', command=lambda :SPRRFID.checkId() )
+button_checkRFID.grid(column=1, row=1, pady=pady_button, padx=padx_button)
 
 spacing=ttk.Frame(frame_button, width=space_size, style=tes_spacing+'.TFrame')
 spacing.grid(column=2, row=0, rowspan=4)
@@ -105,5 +105,3 @@ frame_sisa.grid(column=0, row=4, columnspan=3)
 
 # ---------Execution----------
 root.mainloop()
-
-SPRRFID.checkId()
