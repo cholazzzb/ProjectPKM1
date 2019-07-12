@@ -17,6 +17,8 @@ pady_button=6 #padding/jeda tiap kolom/row thd button
 padx_button=100
 pad_garis=40
 
+
+# Make Frame
 # ---------Settings--------
 white='#FFFFFF' # variable untuk warna background = putih
 green='#A1FCA3' # variable untuk warna hijau
@@ -33,15 +35,15 @@ s.configure('white.TFrame', background='white')
 s.configure('green.TFrame', background='green')
 s.configure('blue.TFrame', background='blue')
 s.configure('button1.TButton', background='white', font='helvetica 22')
-font_judul = font.Font(family='Helvetica', size=64, weight='bold')#define font style
+font_judul = font.Font(family='Helvetica', size=32)#define font style
 
+# ---- Variable ----
+res = tk.StringVar()
+
+# Testing Change Frame
 #--------Mainframe-------- #inisiasi frame utama
 content=ttk.Frame(root, style='blue.TFrame')
 content.grid(column=0, row=0)
-
-# ---------Variables---------- #to be used later
-outputData = tk.StringVar()
-value=5
 
 # --------Frames--------- #frame2 yang dipakai
 
@@ -61,40 +63,6 @@ frame_button.grid(column=0, row=2, columnspan=1)
 frame_label=ttk.Frame(content, width=lcd_width-420, height=lcd_height-tebal_garis_pembatas-logo_size, style='green.TFrame')
 frame_label.grid(column=1, row=2, columnspan=2)
 
-#---------Frame Logo----------
-logo_ori = Image.open("Logo I-Smart Plastic Recycler-Dartwin-ITB.png")#buat logo sesuai keperluan ukuran
-logo_resized = logo_ori.resize((logo_size, logo_size), Image.ANTIALIAS)
-logo_resized.save("logo_resized.png")
-
-logo_file = tk.PhotoImage(file="logo_resized.png") #import ke py
-logo = ttk.Label(frame_logo, image=logo_file, background='white')
-logo.grid(column=0,row=0)
-
-judul = ttk.Label(frame_logo, text='Selamat Datang !!!', font=font_judul, background='white')
-judul.grid(column=1,row=0)
-
-spacing=ttk.Frame(frame_logo, width=space_size, style=tes_spacing+'.TFrame')
-spacing.grid(column=2, row=0)
-
-# ---------Frame Buttons Events----------
-
-##  ---------Frame Buttons Events 1----------
-### ---------Frame Buttons Tombol Kiri----------
-button_ok=ttk.Button(frame_button, text="OK", width=10, style='button1.TButton')
-button_ok.grid(column=0,row=0, pady=pady_button, padx=padx_button)
-button_kembali=ttk.Button(frame_button, text="Kembali", width=10, style='button1.TButton')
-button_kembali.grid(column=0,row=1, pady=pady_button, padx=padx_button)
-button_batal=ttk.Button(frame_button, text="Batal", width=10, style='button1.TButton')
-button_batal.grid(column=0,row=2, pady=pady_button, padx=padx_button)
-button_bantuan=ttk.Button(frame_button, text="Bantuan", width=10, style='button1.TButton')
-button_bantuan.grid(column=0,row=3, pady=pady_button, padx=padx_button)
-
-
-###---------Frame Buttons Fungsional----------
-button_checkRFID=ttk.Button(frame_label, text="Mulai", width=20, style='button1.TButton', command=lambda :SPRRFID.checkId() )
-button_checkRFID.grid(column=0, row=2, pady=pady_button, padx=padx_button)
-
-
 ###---------Frame Pengisi Space Kosong biar fullscreen----------
 spacing=ttk.Frame(content, width=space_size, style=tes_spacing+'.TFrame')
 spacing.grid(column=3, row=0, rowspan=4)
@@ -103,10 +71,29 @@ tebal_sisa=lcd_height-logo_size-tebal_garis_pembatas-2*pad_garis-2*4*pady_button
 frame_sisa=ttk.Frame(content, width=lcd_width, height=tebal_sisa, style=tes_spacing+'.TFrame')
 frame_sisa.grid(column=0, row=4, columnspan=3)
 
-##  ---------Frame Buttons Events 2----------
-##  ---------Frame Buttons Events 3----------
+# Button ganti frame
 
-# --------Functions---------
+satu = ttk.Label(frame_label, text='satu', font=font_judul, background='white')
+satu.grid(column=1,row=2, padx=padx_button)
+
+biru = tk.Entry(frame_label, textvariable=res, background='blue')
+biru.grid(column=1, row=2, pady=pady_button, padx=padx_button)
+
+def merah():
+    res.set("merah")    
+
+
+button_checkRFID=ttk.Button(frame_label, text="bobok", width=20, style='button1.TButton', command=merah)
+#lambda :bobok()
+
+button_checkRFID.grid(column=0, row=2, pady=pady_button, padx=padx_button)
+
+button_checkRFID=ttk.Button(frame_label, text="bangun", width=20, style='button1.TButton')
+button_checkRFID.grid(column=0, row=3, pady=pady_button, padx=padx_button)
+
+
+
 
 # ---------Execution----------
 root.mainloop()
+

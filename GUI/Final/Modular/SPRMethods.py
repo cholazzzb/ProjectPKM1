@@ -10,7 +10,8 @@ def show_label(self, event=None):
     self.label.lift(self.frame)
 
 def hide_label(self, event=None):
-    self.label.lower(self.frame)
+    self.destroy
+    #self.label.lower(self.frame)
 
 def xprint():
     print("Hello World")
