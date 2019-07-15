@@ -10,14 +10,11 @@ import sys
 sys.path.append('/usr/lib/python2.7/dist-packages/') #thonny pakai Python3, python path di term 2.7
 from firebase import firebase
 
-### Setup Firebase ###
-SPR = firebase.FirebaseApplication('https://smartplastic-65d5e.firebaseio.com/', None)
-
-
 #----- Import file lain sebagai Modular -----#
 import SPRMethods as M
 import SPRRFID as RFID
 import SPRInternet as Inet
+
 #import SPRGUI as GUI
 
 #----- Deklarasi Variable Global -----#
@@ -82,7 +79,7 @@ v_saldoAkhir.set("Saldo Akhir = " + d_saldoAkhir)
 
 #----- Aplikasi Utama -----#
 #--------Mainframe-------- #inisiasi frame utama
-content=ttk.Frame(root, style='blue.TFrame')
+content=ttk.Frame(root, style='white.TFrame')
 content.grid(column=0, row=0)
 
 
@@ -102,7 +99,6 @@ frame_label.grid(column=0, row=2, columnspan=3)
 #button
 frame_button=ttk.Frame(content, width=lcd_width, height=40, style='white.TFrame')
 frame_button.grid(column=0, row=3, columnspan=3)
-
 
 
 #---------Frame Logo----------
@@ -130,7 +126,7 @@ def s1_mulai():
     tempelRFID = ttk.Label(frame_label, text="Silahkan tempelkan RFID anda sambil klik ya", font=font_normal, background='white')
     tempelRFID.grid(column=0, row=0)
     global button_ya
-    button_ya=ttk.Button(frame_label,text='ya', width=10, style='button1.TButton', command= lambda :[RFID.checkId(), s2_ya()] )
+    button_ya=ttk.Button(frame_label,text='ya', width=10, style='button1.TButton', command= lambda :[v_id.set("Id = " + str(RFID.checkId())), v_nama.set("Nama = " + str(Inet.get(Inet.makeId(str(RFID.getId())))["nama"])), v_saldo.set("Saldo = " + str(Inet.get(Inet.makeId(str(RFID.getId())))["saldo"])) , s2_ya()] )
     button_ya.grid(column=0, row=1)
     
 def s2_ya():
@@ -186,6 +182,13 @@ def s3_sudah():
    
 
 ##----- Event 1 -----#
+
+#frame sisa
+fSisa = lcd_height-logo_size-tebal_garis_pembatas-2*pad_garis-2*pady_button-4*10
+frame_button=ttk.Frame(content, width=lcd_width, height=fSisa, style='white.TFrame')
+frame_button.grid(column=0, row=4, columnspan=3)
+
+
 button_mulai=ttk.Button(frame_label, text="Mulai", width=10, style='button1.TButton', command= lambda :s1_mulai() )
 button_mulai.grid(column=0,row=0, pady=pady_button, padx=padx_button)
 

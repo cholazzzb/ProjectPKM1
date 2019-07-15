@@ -14,4 +14,7 @@ def checkId():
     finally:
         GPIO.cleanup()
         return id
+    
+def getId():
+    return id
 

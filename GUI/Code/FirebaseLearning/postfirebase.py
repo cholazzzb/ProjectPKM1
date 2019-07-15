@@ -22,5 +22,5 @@ print (SPRdicOn)
 SPR.put(userPath, 'botol kecil', 70)
 
 # Check if the data has been updated
-SPRdicOn = SPR.get(userPath, None)
+SPRdicOn = SPR.get(userPath, None)['saldo']
 print (SPRdicOn)

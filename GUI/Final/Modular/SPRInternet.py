@@ -13,7 +13,17 @@ def get(inetId):
     return SPR.get(inetId, None)
 
 def update(inetId, tipe):
-    value = 55
+    # Logic to update jumlah botol
+    value = str (int(SPR.get(inetId, None)[tipe]) + 1)
+    SPR.put(inetId, tipe, value)
+    
+    # Logic to update Saldo
+    if tipe == "botol kecil":
+        tipe = "saldo"
+        value = str (int(SPR.get(inetId, None)[tipe]) + 150)
+    else :
+        tipe = "saldo"
+        value = str (int(SPR.get(inetId, None)[tipe]) + 500)
     SPR.put(inetId, tipe, value)
     
 

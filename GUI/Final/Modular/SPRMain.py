@@ -5,10 +5,20 @@ import tkinter.ttk as ttk # More modern library
 import time
 from PIL import ImageTk, Image
 
+#--- Firebase
+import sys
+sys.path.append('/usr/lib/python2.7/dist-packages/') #thonny pakai Python3, python path di term 2.7
+from firebase import firebase
+
+### Setup Firebase ###
+SPR = firebase.FirebaseApplication('https://smartplastic-65d5e.firebaseio.com/', None)
+
+
 #----- Import file lain sebagai Modular -----#
 import SPRMethods as M
 import SPRRFID as RFID
 import SPRInternet as Inet
+
 #import SPRGUI as GUI
 
 #----- Deklarasi Variable Global -----#
@@ -54,7 +64,7 @@ d_nama = 'Nic'
 d_saldo = '75000'
 d_jenisBotol = 'Botol Besar'
 d_saldoTambahan = 'Rp 150'
-d_saldoAkhir = 'Rp 75150'
+d_saldoAkhir = '75150'
 
 v_id = tk.StringVar()
 v_nama = tk.StringVar()
@@ -86,13 +96,14 @@ frame_logo.grid(column=0, row=0, columnspan=3)
 frame_garis=ttk.Frame(content, width=lcd_width, height=tebal_garis_pembatas, style='green.TFrame')
 frame_garis.grid(column=0, row=1, columnspan=3, pady=pad_garis)
 
-    #button
-frame_button=ttk.Frame(content, width=420, height=lcd_height-tebal_garis_pembatas-logo_size, style='white.TFrame')
-frame_button.grid(column=0, row=2, columnspan=1)
+#label
+frame_label=ttk.Frame(content, width=lcd_width, height=lcd_height-tebal_garis_pembatas-logo_size-40, style='green.TFrame')
+frame_label.grid(column=0, row=2, columnspan=3)
 
-    #label
-frame_label=ttk.Frame(content, width=lcd_width-420, height=lcd_height-tebal_garis_pembatas-logo_size, style='green.TFrame')
-frame_label.grid(column=1, row=2, columnspan=2)
+#button
+frame_button=ttk.Frame(content, width=lcd_width, height=40, style='white.TFrame')
+frame_button.grid(column=0, row=3, columnspan=3)
+
 
 #---------Frame Logo----------
 logo_ori = Image.open("Logo I-Smart Plastic Recycler-Dartwin-ITB.png")#buat logo sesuai keperluan ukuran
@@ -127,15 +138,15 @@ def s2_ya():
     button_ya.grid_remove()
      ##---------Frame label----------
     global e_id
-    e_id = tk.Entry(frame_label, textvariable=v_id, width=30, background='white', font=font_normal)
+    e_id = tk.Entry(frame_label, textvariable=v_id, width=30, background='blue', font=font_normal)
     e_id.grid(column=0, row=0, pady=pady_button, padx=padx_button)
 
     global e_nama
-    e_nama = tk.Entry(frame_label, textvariable=v_nama, width=30, background='white', font=font_normal)
+    e_nama = tk.Entry(frame_label, textvariable=v_nama, width=30, background='blue', font=font_normal)
     e_nama.grid(column=0, row=1, pady=pady_button, padx=padx_button)
 
     global e_saldo
-    e_saldo = tk.Entry(frame_label, textvariable=v_saldo, width=30, background='white', font=font_normal)
+    e_saldo = tk.Entry(frame_label, textvariable=v_saldo, width=30, background='blue', font=font_normal)
     e_saldo.grid(column=0, row=2, pady=pady_button, padx=padx_button)
     
     global label_state2_1
@@ -158,15 +169,15 @@ def s3_sudah():
     
     
     global e_jenisBotol
-    e_jenisBotol = tk.Entry(frame_label, textvariable=v_jenisBotol, width=30, background='white', font=font_normal)
+    e_jenisBotol = tk.Entry(frame_label, textvariable=v_jenisBotol, width=30, background='blue', font=font_normal)
     e_jenisBotol.grid(column=0, row=1, pady=pady_button, padx=padx_button)
     
     global e_saldoTambahan
-    e_saldoTambahan = tk.Entry(frame_label, textvariable=v_saldoTambahan, width=30, background='white', font=font_normal)
+    e_saldoTambahan = tk.Entry(frame_label, textvariable=v_saldoTambahan, width=30, background='blue', font=font_normal)
     e_saldoTambahan.grid(column=0, row=2, pady=pady_button, padx=padx_button)
     
     global e_saldoAkhir
-    e_saldoAkhir = tk.Entry(frame_label, textvariable=v_saldoAkhir, width=30, background='white',font=font_normal)
+    e_saldoAkhir = tk.Entry(frame_label, textvariable=v_saldoAkhir, width=30, background='blue',font=font_normal)
     e_saldoAkhir.grid(column=0, row=3, pady=pady_button, padx=padx_button)
     
     
@@ -175,6 +186,13 @@ def s3_sudah():
    
 
 ##----- Event 1 -----#
+
+#frame sisa
+fSisa = lcd_height-logo_size-tebal_garis_pembatas-2*pad_garis-2*pady_button-4*10
+frame_button=ttk.Frame(content, width=lcd_width, height=fSisa, style='white.TFrame')
+frame_button.grid(column=0, row=4, columnspan=3)
+
+
 button_mulai=ttk.Button(frame_label, text="Mulai", width=10, style='button1.TButton', command= lambda :s1_mulai() )
 button_mulai.grid(column=0,row=0, pady=pady_button, padx=padx_button)
 
@@ -186,3 +204,5 @@ button_mulai.grid(column=0,row=0, pady=pady_button, padx=padx_button)
 
 root.mainloop()
 
+
+    

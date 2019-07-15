@@ -4,9 +4,6 @@ import SPRRFID as RFID
 # get id from RFID
 id = str(RFID.checkId())
 
-print(RFID.getId())
-
-'''
 # get firebase id
 inetId = Inet.makeId(id)
 
@@ -17,6 +14,7 @@ Inet.update(inetId, "botol besar")
 result = Inet.get(inetId)
 
 print (result)
-'''
+
+
 
 
