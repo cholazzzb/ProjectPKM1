@@ -5,6 +5,15 @@ import tkinter.ttk as ttk # More modern library
 import time
 from PIL import ImageTk, Image
 
+#--- Firebase
+import sys
+sys.path.append('/usr/lib/python2.7/dist-packages/') #thonny pakai Python3, python path di term 2.7
+from firebase import firebase
+
+### Setup Firebase ###
+SPR = firebase.FirebaseApplication('https://smartplastic-65d5e.firebaseio.com/', None)
+
+
 #----- Import file lain sebagai Modular -----#
 import SPRMethods as M
 import SPRRFID as RFID

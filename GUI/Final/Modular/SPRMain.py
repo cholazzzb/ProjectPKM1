@@ -54,7 +54,7 @@ d_nama = 'Nic'
 d_saldo = '75000'
 d_jenisBotol = 'Botol Besar'
 d_saldoTambahan = 'Rp 150'
-d_saldoAkhir = '75150'
+d_saldoAkhir = 'Rp 75150'
 
 v_id = tk.StringVar()
 v_nama = tk.StringVar()
@@ -73,7 +73,7 @@ v_saldoAkhir.set("Saldo Akhir = " + d_saldoAkhir)
 
 #----- Aplikasi Utama -----#
 #--------Mainframe-------- #inisiasi frame utama
-content=ttk.Frame(root, style='blue.TFrame')
+content=ttk.Frame(root, style='white.TFrame')
 content.grid(column=0, row=0)
 
 
@@ -127,15 +127,15 @@ def s2_ya():
     button_ya.grid_remove()
      ##---------Frame label----------
     global e_id
-    e_id = tk.Entry(frame_label, textvariable=v_id, width=30, background='blue', font=font_normal)
+    e_id = tk.Entry(frame_label, textvariable=v_id, width=30, background='white', font=font_normal)
     e_id.grid(column=0, row=0, pady=pady_button, padx=padx_button)
 
     global e_nama
-    e_nama = tk.Entry(frame_label, textvariable=v_nama, width=30, background='blue', font=font_normal)
+    e_nama = tk.Entry(frame_label, textvariable=v_nama, width=30, background='white', font=font_normal)
     e_nama.grid(column=0, row=1, pady=pady_button, padx=padx_button)
 
     global e_saldo
-    e_saldo = tk.Entry(frame_label, textvariable=v_saldo, width=30, background='blue', font=font_normal)
+    e_saldo = tk.Entry(frame_label, textvariable=v_saldo, width=30, background='white', font=font_normal)
     e_saldo.grid(column=0, row=2, pady=pady_button, padx=padx_button)
     
     global label_state2_1
@@ -158,15 +158,15 @@ def s3_sudah():
     
     
     global e_jenisBotol
-    e_jenisBotol = tk.Entry(frame_label, textvariable=v_jenisBotol, width=30, background='blue', font=font_normal)
+    e_jenisBotol = tk.Entry(frame_label, textvariable=v_jenisBotol, width=30, background='white', font=font_normal)
     e_jenisBotol.grid(column=0, row=1, pady=pady_button, padx=padx_button)
     
     global e_saldoTambahan
-    e_saldoTambahan = tk.Entry(frame_label, textvariable=v_saldoTambahan, width=30, background='blue', font=font_normal)
+    e_saldoTambahan = tk.Entry(frame_label, textvariable=v_saldoTambahan, width=30, background='white', font=font_normal)
     e_saldoTambahan.grid(column=0, row=2, pady=pady_button, padx=padx_button)
     
     global e_saldoAkhir
-    e_saldoAkhir = tk.Entry(frame_label, textvariable=v_saldoAkhir, width=30, background='blue',font=font_normal)
+    e_saldoAkhir = tk.Entry(frame_label, textvariable=v_saldoAkhir, width=30, background='white',font=font_normal)
     e_saldoAkhir.grid(column=0, row=3, pady=pady_button, padx=padx_button)
     
     
