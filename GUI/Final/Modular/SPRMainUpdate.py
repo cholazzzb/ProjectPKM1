@@ -3,7 +3,7 @@ from tkinter import font
 import tkinter as tk # For root
 import tkinter.ttk as ttk # More modern library
 import time
-from PIL import ImageTk, Image
+#from PIL import ImageTk, Image
 
 #--- Firebase
 import sys
@@ -27,7 +27,7 @@ white='#FFFFFF' # variable untuk warna background = putih
 green='#A1FCA3' # variable untuk warna hijau
 
 ## Build root
-blue='#A1FCA5' 
+blue='#A1FCA5'
 root = tk.Tk()
 root.title('Smart Plastic Recycler') # GUI Title
 root.configure(background='#000000') # White Color background
@@ -102,13 +102,13 @@ frame_button.grid(column=0, row=3, columnspan=3)
 
 
 #---------Frame Logo----------
-logo_ori = Image.open("Logo I-Smart Plastic Recycler-Dartwin-ITB.png")#buat logo sesuai keperluan ukuran
-logo_resized = logo_ori.resize((logo_size, logo_size), Image.ANTIALIAS)
-logo_resized.save("logo_resized.png")
+#logo_ori = Image.open("Logo I-Smart Plastic Recycler-Dartwin-ITB.png")#buat logo sesuai keperluan ukuran
+#logo_resized = logo_ori.resize((logo_size, logo_size), Image.ANTIALIAS)
+#logo_resized.save("logo_resized.png")
 
-logo_file = tk.PhotoImage(file="logo_resized.png") #import ke py
-logo = ttk.Label(frame_logo, image=logo_file, background='white')
-logo.grid(column=0,row=0)
+#logo_file = tk.PhotoImage(file="logo_resized.png") #import ke py
+#logo = ttk.Label(frame_logo, image=logo_file, background='white')
+#logo.grid(column=0,row=0)
 
 judul = ttk.Label(frame_logo, text='Selamat Datang !!!', font=font_judul, background='white')
 judul.grid(column=1,row=0)
@@ -121,9 +121,7 @@ def s1_mulai():
     global eventState
     eventState=2
     print(eventState)
-    
-    d_saldo = str(Inet.get(Inet.makeId(str(RFID.getId())))["saldo"])
-    
+
     button_mulai.grid_remove()
     global tempelRFID
     tempelRFID = ttk.Label(frame_label, text="Silahkan tempelkan RFID anda sambil klik ya", font=font_normal, background='white')
@@ -131,8 +129,9 @@ def s1_mulai():
     global button_ya
     button_ya=ttk.Button(frame_label,text='ya', width=10, style='button1.TButton', command= lambda :[v_id.set("Id = " + str(RFID.checkId())), v_nama.set("Nama = " + str(Inet.get(Inet.makeId(str(RFID.getId())))["nama"])), v_saldo.set("Saldo = " + str(Inet.get(Inet.makeId(str(RFID.getId())))["saldo"])) , s2_ya()] )
     button_ya.grid(column=0, row=1)
-    
+
 def s2_ya():
+    d_saldo = str(Inet.get(Inet.makeId(str(RFID.getId())))["saldo"])
     tempelRFID.grid_remove()
     button_ya.grid_remove()
      ##---------Frame label----------
@@ -147,42 +146,42 @@ def s2_ya():
     global e_saldo
     e_saldo = tk.Entry(frame_label, textvariable=v_saldo, width=30, background='blue', font=font_normal)
     e_saldo.grid(column=0, row=2, pady=pady_button, padx=padx_button)
-    
+
     global label_state2_1
     label_state2_1 = ttk.Label(frame_label, text='Silahkan masukan botol', width=30, background='white', font=font_normal)
     #, font=font_judul
     label_state2_1.grid(column=0,row=3)
-    
+
     global button_sudah
     button_sudah=ttk.Button(frame_label,text='sudah', width=10, style='button1.TButton', command= lambda :s3_sudah() )
     button_sudah.grid(column=0, row=4)
-    
+
 def s3_sudah():
     e_id.grid_remove()
     e_nama.grid_remove()
     e_saldo.grid_remove()
     label_state2_1.grid_remove()
     button_sudah.grid_remove()
-    
+
     global label_proses
-    
-    
+
+
     global e_jenisBotol
     e_jenisBotol = tk.Entry(frame_label, textvariable=v_jenisBotol, width=30, background='blue', font=font_normal)
     e_jenisBotol.grid(column=0, row=1, pady=pady_button, padx=padx_button)
-    
+
     global e_saldoTambahan
     e_saldoTambahan = tk.Entry(frame_label, textvariable=v_saldoTambahan, width=30, background='blue', font=font_normal)
     e_saldoTambahan.grid(column=0, row=2, pady=pady_button, padx=padx_button)
-    
+
     global e_saldoAkhir
     e_saldoAkhir = tk.Entry(frame_label, textvariable=v_saldoAkhir, width=30, background='blue',font=font_normal)
     e_saldoAkhir.grid(column=0, row=3, pady=pady_button, padx=padx_button)
-    
-    
-    
-    
-   
+
+
+
+
+
 
 ##----- Event 1 -----#
 
@@ -202,6 +201,3 @@ button_mulai.grid(column=0,row=0, pady=pady_button, padx=padx_button)
 # ---------Execution----------
 
 root.mainloop()
-
-
-    
