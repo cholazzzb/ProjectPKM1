@@ -14,17 +14,28 @@ def get(inetId):
 
 def update(inetId, tipe):
     # Logic to update jumlah botol
-    value = str (int(SPR.get(inetId, None)[tipe]) + 1)
-    SPR.put(inetId, tipe, value)
+    global jumlahBotol
+    global saldoAkhir
+    global saldoTambahan
+    jumlahBotol = str (int(SPR.get(inetId, None)[tipe]) + 1)
+    SPR.put(inetId, tipe, jumlahBotol)
     
     # Logic to update Saldo
     if tipe == "botol kecil":
         tipe = "saldo"
-        value = str (int(SPR.get(inetId, None)[tipe]) + 150)
+        saldoTambahan = "150"
+        saldoAkhir = str (int(SPR.get(inetId, None)[tipe]) + 150)
     else :
         tipe = "saldo"
-        value = str (int(SPR.get(inetId, None)[tipe]) + 500)
-    SPR.put(inetId, tipe, value)
+        saldoTambahan = "500"
+        saldoAkhir = str (int(SPR.get(inetId, None)[tipe]) + 500)
+    SPR.put(inetId, tipe, saldoAkhir)
+    
+def liatSaldoTambahan():
+    return saldoTambahan
+
+def liatSaldoAkhir():
+    return saldoAkhir
     
 
 #----- Fungsi Update -----
