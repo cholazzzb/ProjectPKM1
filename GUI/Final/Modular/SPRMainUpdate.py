@@ -177,14 +177,15 @@ def s3_sudah():
     e_saldoAkhir = ttk.Label(frame_label, text=v_saldoAkhir, width=30, background='blue',font=font_normal)
     e_saldoAkhir.grid(column=0, row=3, pady=pady_button, padx=padx_button)
     
-    time.sleep(5)
-    ulang()
-    mulai()
+    global button_selesai
+    button_selesai=ttk.Button(frame_label,text='Selesai', width=10, style='button1.TButton', command= lambda : [ulang(), mulai()] )
+    button_selesai.grid(column=0, row=4)
 
 def ulang():
     e_jenisBotol.grid_remove()
     e_saldoTambahan.grid_remove()
     e_saldoAkhir.grid_remove()
+    button_selesai.grid_remove()
 
 
 
@@ -200,3 +201,5 @@ mulai()
 # ---------Execution----------
 
 root.mainloop()
+
+
