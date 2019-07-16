@@ -106,6 +106,7 @@ def mulai():
     global button_mulai
     button_mulai=ttk.Button(frame_label, text="Mulai", width=10, style='button1.TButton', command= lambda :s1_mulai() )
     button_mulai.grid(column=0,row=0, pady=pady_button, padx=padx_button)
+    
 
 
 def s1_mulai():
@@ -175,9 +176,15 @@ def s3_sudah():
     global e_saldoAkhir
     e_saldoAkhir = ttk.Label(frame_label, text=v_saldoAkhir, width=30, background='blue',font=font_normal)
     e_saldoAkhir.grid(column=0, row=3, pady=pady_button, padx=padx_button)
+    
+    time.sleep(5)
+    ulang()
+    mulai()
 
-
-
+def ulang():
+    e_jenisBotol.grid_remove()
+    e_saldoTambahan.grid_remove()
+    e_saldoAkhir.grid_remove()
 
 
 
@@ -189,11 +196,6 @@ frame_button=ttk.Frame(content, width=lcd_width, height=fSisa, style='white.TFra
 frame_button.grid(column=0, row=4, columnspan=3)
 
 mulai()
-
-
-
-
-
 
 # ---------Execution----------
 
