@@ -60,7 +60,7 @@ d_nama = 'Nic'
 d_saldo = '75000'
 d_jenisBotol = 'Botol Besar'
 d_saldoTambahan = 'Rp 150'
-d_saldoAkhir = '75150'
+d_saldoAkhir = '18150'
 
 v_id = tk.StringVar()
 v_nama = tk.StringVar()
@@ -121,6 +121,9 @@ def s1_mulai():
     global eventState
     eventState=2
     print(eventState)
+    
+    d_saldo = str(Inet.get(Inet.makeId(str(RFID.getId())))["saldo"])
+    
     button_mulai.grid_remove()
     global tempelRFID
     tempelRFID = ttk.Label(frame_label, text="Silahkan tempelkan RFID anda sambil klik ya", font=font_normal, background='white')
