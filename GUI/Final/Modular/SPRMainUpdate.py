@@ -96,6 +96,21 @@ logoKecil = tk.PhotoImage(file="logo60.png")
 
 ## ----- Fungsi -----
 
+
+### Fungsi Delay
+#### 
+def delay1():
+    delay11 = delay.after(10000, lambda:[s3_sudah(), label_state2_1.grid_remove(), buttonUdah.grid_remove()])
+    return delay11
+    
+def delay2():
+    delay22 = delay.after(10000, lambda:[mulai(), label_state2_1.grid_remove(), buttonUdah.grid_remove()])
+    return delay22
+    
+def delay3():
+    delay33 = delay.after(5000,lambda:[ulang(), mulai()]) 
+    return delay33
+
 #Klo tombol bantuan ditekan
 def bantu():
     messagebox.showinfo(message='Untuk bantuan silahan hubungi Dartwin 08xxxxxxxxxx')
@@ -194,10 +209,10 @@ def tambahLagi():
     label_state2_1.grid(column=1,row=1)
     
     global buttonUdah
-    buttonUdah = ttk.Button(frame_label, text = "Udah", style='button1.TButton', command= lambda: tambah())
+    buttonUdah = ttk.Button(frame_label, text = "Udah", style='button1.TButton', command= lambda: [tambah(), delay.after_cancel(delay1())])
     buttonUdah.grid(column=2,row=2)
     
-    delay.after(10000, lambda:[s3_sudah(), label_state2_1.grid_remove(), buttonUdah.grid_remove()])
+    delay1()
     
     
 def tambah():
@@ -228,10 +243,10 @@ def loopUWU():
     label_state2_1.grid(column=1,row=1)
     
     global buttonUdah
-    buttonUdah = ttk.Button(frame_label, text = "Udah", style='button1.TButton', command= lambda: tambah())
+    buttonUdah = ttk.Button(frame_label, text = "Udah", style='button1.TButton', command= lambda: [tambah(), delay.after_cancel(delay2())])
     buttonUdah.grid(column=2,row=2)
     
-    delay.after(10000, lambda:[mulai(), label_state2_1.grid_remove(), buttonUdah.grid_remove()])
+    delay2()
         
 def khusus():
     lagi.grid_remove()
@@ -281,7 +296,7 @@ def makasi():
     global e_makasi
     e_makasi = ttk.Label(frame_label, text="Terimakasih atas kerjasama " + v_namaAja + " semoga dunia menjadi lebih indah =)", font=font_normal, background='blue')
     e_makasi.grid(column=1, row=1)
-    delay.after(5000,lambda:[ulang(), mulai()])
+    delay3()
 
 def ulang():
     e_makasi.grid_remove()
