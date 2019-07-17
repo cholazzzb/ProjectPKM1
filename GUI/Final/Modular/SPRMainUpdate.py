@@ -271,7 +271,7 @@ def s3_sudah():
 
 def makasi():
     logoLabel.grid_remove()
-    buttonBantuan.grid.remove()
+    buttonBantuan.grid_remove()
     e_banyakBotol.grid_remove()    
     e_jenisBotol.grid_remove()
     e_saldoTambahan.grid_remove()
