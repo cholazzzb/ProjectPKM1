@@ -24,11 +24,11 @@ def update(inetId, tipe):
     if tipe == "botol kecil":
         tipe = "saldo"
         saldoTambahan = "150"
-        saldoAkhir = str (int(SPR.get(inetId, None)[tipe]) + 150)
+        saldoAkhir = str (int(SPR.get(inetId, None)[tipe]) + 30)
     else :
         tipe = "saldo"
         saldoTambahan = "500"
-        saldoAkhir = str (int(SPR.get(inetId, None)[tipe]) + 500)
+        saldoAkhir = str (int(SPR.get(inetId, None)[tipe]) + 65)
     SPR.put(inetId, tipe, saldoAkhir)
     
 def liatSaldoTambahan():
