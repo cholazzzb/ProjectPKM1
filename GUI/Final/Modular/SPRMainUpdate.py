@@ -105,7 +105,7 @@ spacing.grid(column=2, row=0)
 def mulai():
     global button_mulai
     button_mulai=ttk.Button(frame_label, text="Mulai", width=10, style='button1.TButton', command= lambda :s1_mulai() )
-    button_mulai.grid(column=0,row=0, pady=pady_button, padx=padx_button)
+    button_mulai.grid(column=0,row=1, pady=150, padx=padx_button)
     
 
 
@@ -117,7 +117,18 @@ def s1_mulai():
     button_mulai.grid_remove()
     global tempelRFID
     tempelRFID = ttk.Label(frame_label, text="Silahkan tempelkan RFID anda sambil klik ya", font=font_normal, background='white')
-    tempelRFID.grid(column=0, row=0)
+    tempelRFID.grid(column=0, row=0, pady=100)
+    
+    #Icon
+    iconOk = Image.open("OK.gif")#buat logo sesuai keperluan ukuran
+    iconOk_resized = iconOk.resize((100, 100), Image.ANTIALIAS)
+    iconOk_resized.save("iconOk.png")
+
+    iconOK_file = tk.PhotoImage(file="logo_resized.png") #import ke py
+    logo = ttk.Label(frame_logo, image=logo_file, background='white')
+    logo.grid(column=0,row=0)
+    
+    
     global button_ya
     button_ya=ttk.Button(frame_label,text='ya', width=10, style='button1.TButton', command= lambda :[RFID.checkId(), s2_ya()] )
     button_ya.grid(column=0, row=1)
