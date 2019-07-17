@@ -33,3 +33,6 @@ def s2_ok():
     button_batal.grid_remove()
     button_bantuan.grid_remove()
     
+def tambahBotol():
+    v_jumlahBotol = str(int(v_jumlahBotol) + 1)
+    
