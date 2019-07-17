@@ -62,6 +62,12 @@ v_jenisBotol = 'Botol Besar'
 v_saldoTambahan = 'Rp 150'
 v_saldoAkhir = '18150'
 
+
+# import gambar
+global iconOk_p
+iconOk_p = tk.PhotoImage(file="iconOk.png") #import ke py
+
+
 #----- Aplikasi Utama -----#
 #--------Mainframe-------- #inisiasi frame utama
 content=ttk.Frame(root, style='white.TFrame')
@@ -118,20 +124,16 @@ def s1_mulai():
     global tempelRFID
     tempelRFID = ttk.Label(frame_label, text="Silahkan tempelkan RFID anda sambil klik ya", font=font_normal, background='white')
     tempelRFID.grid(column=0, row=0, pady=100)
-    
-    #Icon
-    iconOk = Image.open("OK.gif")#buat logo sesuai keperluan ukuran
-    iconOk_resized = iconOk.resize((100, 100), Image.ANTIALIAS)
-    iconOk_resized.save("iconOk.png")
-
-    iconOK_file = tk.PhotoImage(file="logo_resized.png") #import ke py
-    logo = ttk.Label(frame_logo, image=logo_file, background='white')
-    logo.grid(column=0,row=0)
-    
-    
+       
     global button_ya
     button_ya=ttk.Button(frame_label,text='ya', width=10, style='button1.TButton', command= lambda :[RFID.checkId(), s2_ya()] )
     button_ya.grid(column=0, row=1)
+    
+    #Icon
+    
+    global iconOk
+    iconOk = ttk.Button(frame_label, image=iconOk_p, style='button1.TButton', command= lambda :[RFID.checkId(), s2_ya()])
+    iconOk.grid(column=2,row=1)
 
 def s2_ya():
     v_id = "Id = " + str(RFID.getId())
@@ -160,6 +162,11 @@ def s2_ya():
     global button_sudah
     button_sudah=ttk.Button(frame_label,text='sudah', width=10, style='button1.TButton', command= lambda : [Inet.update(Inet.makeId(str(RFID.getId())), "botol kecil"), s3_sudah()] )
     button_sudah.grid(column=0, row=4)
+    
+    global iconOk
+    iconOk_p = tk.PhotoImage(file="iconOk.png") #import ke py
+    iconOk = ttk.Label(frame_label, image=iconOk_p, background='white')
+    iconOk.grid(column=2,row=4)
 
 def s3_sudah():
     e_id.grid_remove()
