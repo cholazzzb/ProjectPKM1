@@ -12,7 +12,7 @@ sys.path.append('/usr/lib/python2.7/dist-packages/') #thonny pakai Python3, pyth
 from firebase import firebase
 
 #----- Import file lain sebagai Modular -----#
-import SPRMethods as M
+#import SPRMethods as M
 import SPRRFID as RFID
 import SPRInternet as Inet
 
@@ -24,10 +24,8 @@ import SPRInternet as Inet
 # ----- Settings -----#
 ##Warna
 white='#FFFFFF' # variable untuk warna background = putih
-green='#A1FCA3' # variable untuk warna hijau
 
 ## Build root
-blue='#A1FCA5'
 root = tk.Tk()
 root.title('Smart Plastic Recycler') # GUI Title
 root.configure(background='#000000') # White Color background
@@ -39,18 +37,14 @@ logo_size=350 #ukuran logo
 lcd_width=1280 #ukuran lcd
 tengah =1160
 lcd_height=800
-tebal_garis_pembatas=7 #tebal garis ijo
 space_size=100 #ukuran space di kanan untuk estetika, coba ganti tes_spacing dg 'green'
-tes_spacing='green' #indikasi tebal spacing
 pady_button=6 #padding/jeda tiap kolom/row thd button
-padx_button=100
+padx_button=80
 pad_garis=40
 
 # ---------Style-------- #pengaturan ui perlu style, gabisa dikasih argumen langsung di objek
 s = ttk.Style()
 s.configure('white.TFrame', background='white')
-s.configure('green.TFrame', background='green')
-s.configure('blue.TFrame', background='blue')
 s.configure('button1.TButton', background='white', font='helvetica 22')
 # Font untuk judul selamat datang dan terimakasi
 font_big = font.Font(family='Calibri', size=64, weight='bold')#define font style
@@ -84,20 +78,20 @@ content.grid(column=0, row=0)
 # --------Frames--------- #frame2 yang dipakai
 
 #logo kecil
-frame_logo=ttk.Frame(content, height=lcd_height, width =60, style='blue.TFrame')
+frame_logo=ttk.Frame(content, height=lcd_height, width =60, style='white.TFrame')
 # height=logo_size,
 frame_logo.grid(column=0, row=0, rowspan=7)
 
 #logo awal
-frame_awal=ttk.Frame(content, width=tengah, style='green.TFrame')
+frame_awal=ttk.Frame(content, width=tengah, style='white.TFrame')
 frame_awal.grid(column=1, row=0, columnspan=3, sticky='n')
 
 #isi
-frame_label=ttk.Frame(content, width=tengah, height = lcd_height-60, style='blue.TFrame')
+frame_label=ttk.Frame(content, width=tengah, height = lcd_height-60, style='white.TFrame')
 frame_label.grid(column=1, row=1, rowspan=6, columnspan=3, sticky='n')
 
 #bantuan
-frame_bantuan=ttk.Frame(content, height=lcd_height, width=60, style='blue.TFrame')
+frame_bantuan=ttk.Frame(content, height=lcd_height, width=60, style='white.TFrame')
 frame_bantuan.grid(column=4, row=0, rowspan=7)
 
 
@@ -105,6 +99,8 @@ frame_bantuan.grid(column=4, row=0, rowspan=7)
 logo_file = tk.PhotoImage(file="logo_resized.png") #import ke py
 iconBantuan = tk.PhotoImage(file="iconBantuan.png")
 logoKecil = tk.PhotoImage(file="logo60.png")
+kosong = tk.PhotoImage(file="isi.png")
+pinggir = tk.PhotoImage(file="pinggir.png")
     
 
 ## ----- Fungsi -----
@@ -132,6 +128,9 @@ def bantu():
 
 def mulai():
 
+    global v_jumlahBotol
+    v_jumlahBotol = '0'
+    
     global logo
     logo = ttk.Label(frame_awal, image=logo_file, background='white')
     logo.grid(column=0,row=0)
@@ -141,12 +140,14 @@ def mulai():
     judul.grid(column=1,row=0)
     
     global e_mulai
-    e_mulai = ttk.Label(frame_label, text="        Silahkan klik tombol mulai\n   lalu tempelkan kartu RFID anda!", width=30, background='blue', font=font_button)
+    e_mulai = ttk.Label(frame_label, text="        Silahkan klik tombol mulai\n   lalu tempelkan kartu RFID anda!", width=30,
+                        background='white', font=font_button)
     #e_mulai.configure(anchor="center")
     e_mulai.grid(column=1, row=1, pady=pady_button, padx=padx_button)
     
     global button_mulai
-    button_mulai=ttk.Button(frame_label, text="Mulai", width=10, style='button1.TButton', command= lambda :[RFID.checkId(), s1_mulai()] )
+    button_mulai=ttk.Button(frame_label, text="Mulai", width=10, style='button1.TButton', command= lambda :[RFID.checkId(),
+                                                                                                            s1_mulai()] )
     button_mulai.grid(column=1,row=2, pady=150, padx=padx_button)
     
 def s1_mulai():
@@ -162,7 +163,10 @@ def s1_mulai():
     judul.grid_remove()
     #Ilangin bagian atas
     
-    frame_awal.config(width=150)
+    global putih
+    putih = ttk.Label(frame_awal,
+                      image=kosong)
+    putih.grid(column=0, row=0)
     
     
     
@@ -170,8 +174,8 @@ def s1_mulai():
     global logoLabel
     logoLabel = ttk.Label(frame_logo,
                           image=logoKecil,
-                          background='red',
-                          anchor="n")
+                          background='white'
+                          )
     logoLabel.grid(column=0,row=0)
     
     global buttonBantuan
@@ -179,23 +183,37 @@ def s1_mulai():
                                image=iconBantuan,
                                style='button1.TButton',
                                command= lambda: bantu())
-    buttonBantuan.grid(column=2,row=0, sticky='s')
+    buttonBantuan.grid(column=0,row=0)
+    
+    global pinggiran1
+    pinggiran1 = ttk.Label(frame_logo,
+                          image=pinggir
+                          )
+    pinggiran1.grid(column=0,row=1)
+    
+    global pinggiran2
+    pinggiran2 = ttk.Label(frame_bantuan,
+                          image=pinggir
+                          )
+    pinggiran2.grid(column=0,row=1)
     
     ##---------Frame label----------
     global e_apakah
-    e_apakah = ttk.Label(frame_label, text ="Apakah datanya benar?", font=font_button)
+    e_apakah = ttk.Label(frame_label, text ="Apakah datanya benar?", 
+                         font=font_button,
+                         background='white')
     e_apakah.grid(column=1, row=1, pady=pady_button, padx=padx_button)
     
     global e_id
-    e_id = ttk.Label(frame_label, text=v_id, width=30, background='blue', font=font_data)
+    e_id = ttk.Label(frame_label, text=v_id, background='white', font=font_data)
     e_id.grid(column=1, row=2, pady=pady_button, padx=padx_button)
 
     global e_nama
-    e_nama = ttk.Label(frame_label, text=v_nama, width=30, background='blue', font=font_data)
+    e_nama = ttk.Label(frame_label, text=v_nama, background='white', font=font_data)
     e_nama.grid(column=1, row=3, pady=pady_button, padx=padx_button)
 
     global e_saldo
-    e_saldo = ttk.Label(frame_label, text=v_saldo, width=30, background='blue', font=font_data)
+    e_saldo = ttk.Label(frame_label, text=v_saldo, background='white', font=font_data)
     e_saldo.grid(column=1, row=4, pady=pady_button, padx=padx_button)
     
     global buttonKembali
@@ -215,7 +233,9 @@ def balikKeAwal():
     e_saldo.grid_remove()
     buttonKembali.grid_remove()
     buttonOk.grid_remove()
-    
+    pinggiran1.grid_remove()
+    pinggiran2.grid_remove()
+    putih.grid_remove()
     
 def tambahLagi():
     e_apakah.grid_remove()
@@ -225,83 +245,112 @@ def tambahLagi():
     buttonOk.grid_remove()
     buttonKembali.grid_remove()
     
+    
     global label_state2_1
-    label_state2_1 = ttk.Label(frame_label, text='   Silahkan masukkan botol\n  ke lubang masuk botol', width=30, background='white', font=font_button)
+    label_state2_1 = ttk.Label(frame_label, text='Silahkan masukkan botol',  background='white', font=font_button,
+                               justify='center')
     #, font=font_judul
     label_state2_1.grid(column=1,row=1)
+    global label_state2_2
+    label_state2_2 = ttk.Label(frame_label, text='ke lubang masuk botol',  background='white', font=font_button,
+                               justify='center')
+    #, font=font_judul
+    label_state2_2.grid(column=1,row=2)
     
     global buttonUdah
-    buttonUdah = ttk.Button(frame_label, text = "Udah", style='button1.TButton', command= lambda: [tambah(), M.tambahBotol()])
+    buttonUdah = ttk.Button(frame_label, text = "Udah", style='button1.TButton', command= lambda: tambah())
     # , delay.after_cancel(delay1())
-    buttonUdah.grid(column=2,row=2)
+    buttonUdah.grid(column=1,row=3)
     
     #delay1()
     
     
 def tambah():
     label_state2_1.grid_remove()
+    label_state2_2.grid_remove()
     buttonUdah.grid_remove()
+    global v_jumlahBotol
+    v_jumlahBotol = str(int(v_jumlahBotol)+1)
     
     global lagi
-    lagi = ttk.Label(frame_label, text='   Apakah anda masih ingin \n  memasukkan sampah botol plastik?', width=30, background='white', font=font_button)
-    #, font=font_judul
-    lagi.grid(column=1,row=1)
+    lagi = ttk.Label(frame_label, text='Apakah anda masih ingin',
+                     background='white', font=font_button)
+    lagi.grid(column=1,row=0)
+    global jir
+    jir = ttk.Label(frame_label, text='memasukkan sampah botol plastik?',
+                     background='white', font=font_button)
+    jir.grid(column=1,row=1)
     
     global buttonYa
     buttonYa = ttk.Button(frame_label, text = "Ya", style='button1.TButton', command= lambda: loopUWU())
     buttonYa.grid(column=2,row=2)
     
     global buttonGa
-    buttonGa = ttk.Button(frame_label, text = "Tidak", style='button1.TButton' , command= lambda : [Inet.update(Inet.makeId(str(RFID.getId())), "botol kecil"), s3_sudah(), khusus()])
+    buttonGa = ttk.Button(frame_label, text = "Tidak", style='button1.TButton' ,
+                          command= lambda : [Inet.update(Inet.makeId(str(RFID.getId())), "botol kecil"), s3_sudah(), khusus()])
     buttonGa.grid(column=0,row=2)
     
 def loopUWU():
     lagi.grid_remove()
+    jir.grid_remove()
     buttonYa.grid_remove()
     buttonGa.grid_remove()
     
     global label_state2_1
-    label_state2_1 = ttk.Label(frame_label, text='   Silahkan masukkan botol\n  ke lubang masuk botol', width=30, background='white', font=font_button)
+    label_state2_1 = ttk.Label(frame_label, text='Silahkan masukkan botol',  background='white', font=font_button,
+                               justify='center')
     #, font=font_judul
     label_state2_1.grid(column=1,row=1)
+    global label_state2_2
+    label_state2_2 = ttk.Label(frame_label, text='ke lubang masuk botol',  background='white', font=font_button,
+                               justify='center')
+    #, font=font_judul
+    label_state2_2.grid(column=1,row=2)
     
     global buttonUdah
     buttonUdah = ttk.Button(frame_label, text = "Udah", style='button1.TButton', command= lambda: tambah())
     #, delay.after_cancel(delay2())
-    buttonUdah.grid(column=2,row=2)
+    buttonUdah.grid(column=1,row=3)
     
     #delay2()
         
 def khusus():
     lagi.grid_remove()
+    jir.grid_remove()
     e_apakah.grid_remove()
     e_id.grid_remove()
     e_nama.grid_remove()
     e_saldo.grid_remove()
     label_state2_1.grid_remove()
+    label_state2_2.grid_remove()
     buttonYa.grid_remove()
     buttonGa.grid_remove()
 
 def s3_sudah():
-        
+    global v_jumlahBotol
+    v_jumlahBotol = "Jumlah Botol yang dimasukan = " + v_jumlahBotol
     v_jenisBotol = "Jenis Botol = Botol Kecil"
     v_saldoTambahan = "Saldo Tambahan = " + Inet.liatSaldoTambahan()
     v_saldoAkhir = "Saldo Akhir = " + Inet.liatSaldoAkhir()
     
     global e_banyakBotol
-    e_banyakBotol = ttk.Label(frame_label, text=v_jumlahBotol, width=30, background='blue',font=font_data)
+    e_banyakBotol = ttk.Label(frame_label, text=v_jumlahBotol,
+                              background='white',font=font_data)
     e_banyakBotol.grid(column=0, row=1, pady=pady_button, padx=padx_button)    
 
     global e_jenisBotol
-    e_jenisBotol = ttk.Label(frame_label, text=v_jenisBotol, width=30, background='blue', font=font_data)
+    e_jenisBotol = ttk.Label(frame_label, text=v_jenisBotol,
+                             background='white', font=font_data)
     e_jenisBotol.grid(column=0, row=2, pady=pady_button, padx=padx_button)
 
     global e_saldoTambahan
-    e_saldoTambahan = ttk.Label(frame_label, text=v_saldoTambahan, width=30, background='blue', font=font_data)
+    e_saldoTambahan = ttk.Label(frame_label, text=v_saldoTambahan,
+                                background='white', font=font_data)
     e_saldoTambahan.grid(column=0, row=3, pady=pady_button, padx=padx_button)
 
     global e_saldoAkhir
-    e_saldoAkhir = ttk.Label(frame_label, text=v_saldoAkhir, width=30, background='blue',font=font_data)
+    e_saldoAkhir = ttk.Label(frame_label, text=v_saldoAkhir,
+                             background='white',font=font_data)
     e_saldoAkhir.grid(column=0, row=4, pady=pady_button, padx=padx_button)
  
     global buttonUpdate
@@ -318,15 +367,23 @@ def makasi():
     buttonUpdate.grid_remove()
     
     global e_makasi
-    e_makasi = ttk.Label(frame_label, text="Terimakasih atas kerjasama " + v_namaAja + "\n   semoga dunia menjadi lebih indah =)", font=font_button, background='blue')
+    e_makasi = ttk.Label(frame_label, text="Terimakasih atas kerjasama " + v_namaAja + "\n   semoga dunia menjadi lebih indah =)", font=font_button,
+                         background='white')
     e_makasi.grid(column=1, row=1)
     delay3()
+    
+    global putih2
+    putih2 = ttk.Label(frame_label,
+                      image=kosong)
+    putih2.grid(column=1, row=3)
 
 def ulang():
     e_makasi.grid_remove()
     e_jenisBotol.grid_remove()
     e_saldoTambahan.grid_remove()
     e_saldoAkhir.grid_remove()
+    putih.grid_remove()
+    putih2.grid_remove()
 
 ##----- Event 1 -----#
 

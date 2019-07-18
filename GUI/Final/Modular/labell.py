@@ -112,27 +112,8 @@ frame_button=ttk.Frame(content, height=lcd_height, width=60, style='white.TFrame
 frame_button.grid(column=4, row=0, rowspan=7)
 
 ##
-Kecil = ttk.Label(frame_logo,
-                  image=logoKecil,
-                  background='red',
-                  )
-
-Kecil.grid(column=0,row=0)
-
-pinggiran = ttk.Label(frame_logo,
-                      image=pinggir,
-                      )
-pinggiran.grid(column=0,row=1)
-
-bantuu = ttk.Label(frame_button,
-                   image=iconBantuan,
-                   )
-bantuu.grid(column=0,row=0)
-pinggiran2 = ttk.Label(frame_button,
-                      image=pinggir,
-                      )
-pinggiran2.grid(column=0,row=1)
-
+Kecil = ttk.Label(frame_label, text='tengah', justify='center')
+Kecil.grid(column=0, row=0)
 
 
 root.mainloop()
