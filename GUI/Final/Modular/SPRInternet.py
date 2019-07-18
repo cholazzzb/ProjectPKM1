@@ -31,6 +31,9 @@ def update(inetId, tipe):
         saldoAkhir = str (int(SPR.get(inetId, None)[tipe]) + 65)
     SPR.put(inetId, tipe, saldoAkhir)
     
+def updateTanggal(inetId, tanggal):
+   SPR.put(inetId, "tanggal", tanggal)
+   
 def liatSaldoTambahan():
     return saldoTambahan
 

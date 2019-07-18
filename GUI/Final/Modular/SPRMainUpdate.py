@@ -3,7 +3,7 @@ from tkinter import font
 from tkinter import messagebox
 import tkinter as tk # For root
 import tkinter.ttk as ttk # More modern library
-import time
+import datetime
 from PIL import ImageTk, Image
 
 #--- Firebase
@@ -269,6 +269,9 @@ def tambah():
     label_state2_1.grid_remove()
     label_state2_2.grid_remove()
     buttonUdah.grid_remove()
+    
+    
+    
     global v_jumlahBotol
     v_jumlahBotol = str(int(v_jumlahBotol)+1)
     
@@ -327,11 +330,21 @@ def khusus():
     buttonGa.grid_remove()
 
 def s3_sudah():
+    
+    
+    tanggal = datetime.datetime.now().strftime('%d/%m/%Y')
     global v_jumlahBotol
     v_jumlahBotol = "Jumlah Botol yang dimasukan = " + v_jumlahBotol
     v_jenisBotol = "Jenis Botol = Botol Kecil"
     v_saldoTambahan = "Saldo Tambahan = " + Inet.liatSaldoTambahan()
     v_saldoAkhir = "Saldo Akhir = " + Inet.liatSaldoAkhir()
+    
+    global e_tanggal
+    e_tanggal = ttk.Label(frame_label,
+                          text = "Tanggal = " + tanggal,
+                          background='white',
+                          font=font_data)
+    e_tanggal.grid(column=0, row=0, pady=pady_button, padx=padx_button)
     
     global e_banyakBotol
     e_banyakBotol = ttk.Label(frame_label, text=v_jumlahBotol,
@@ -359,6 +372,7 @@ def s3_sudah():
 
 def makasi():
     logoLabel.grid_remove()
+    e_tanggal.grid_remove()
     buttonBantuan.grid_remove()
     e_banyakBotol.grid_remove()    
     e_jenisBotol.grid_remove()

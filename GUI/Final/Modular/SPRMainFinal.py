@@ -11,6 +11,13 @@ import sys
 sys.path.append('/usr/lib/python2.7/dist-packages/') #thonny pakai Python3, python path di term 2.7
 from firebase import firebase
 
+# Image processing
+sys.path.append('..')
+sys.path.append('/home/pi/tensorflow1/models/research/object_detection')
+sys.path.append('/home/pi/tensorflow1/models/research/slim')
+sys.path.append('/home/pi/tensorflow1/models/research')
+import image_processing as sakti
+
 #----- Import file lain sebagai Modular -----#
 #import SPRMethods as M
 import SPRRFID as RFID
@@ -266,6 +273,11 @@ def tambahLagi():
     
     
 def tambah():
+
+    global ukuran
+    ukuran = sakti.size()
+    print(ukuran)
+    
     label_state2_1.grid_remove()
     label_state2_2.grid_remove()
     buttonUdah.grid_remove()
@@ -295,6 +307,7 @@ def loopUWU():
     jir.grid_remove()
     buttonYa.grid_remove()
     buttonGa.grid_remove()
+    print(ukuran)
     
     global label_state2_1
     label_state2_1 = ttk.Label(frame_label, text='Silahkan masukkan botol',  background='white', font=font_button,
