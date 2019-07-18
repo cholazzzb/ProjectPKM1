@@ -7,11 +7,11 @@ from PIL import ImageTk, Image
 
 root = tk.Tk()
 
-logo_ori = Image.open("Logo I-Smart Plastic Recycler-Dartwin-ITB.png")#buat logo sesuai keperluan ukuran
+logo_ori = Image.open("iconBantuan.png")#buat logo sesuai keperluan ukuran
 logo60 = logo_ori.resize((60, 60), Image.ANTIALIAS)
-logo60.save("logo60.png")
+logo60.save("Bantuan.png")
 
-logo60 = tk.PhotoImage(file="logo60.png") #import ke py
+logo60 = tk.PhotoImage(file="iconBantuan.png") #import ke py
 logo = ttk.Label(root, image=logo60, background='white')
 logo.grid(column=0,row=0)
 

@@ -37,7 +37,7 @@ root.wm_attributes('-fullscreen','true') #fullscreen
 #----------Constants-----------
 logo_size=350 #ukuran logo
 lcd_width=1280 #ukuran lcd
-tengah =1120
+tengah =800
 lcd_height=800
 tebal_garis_pembatas=7 #tebal garis ijo
 space_size=100 #ukuran space di kanan untuk estetika, coba ganti tes_spacing dg 'green'
@@ -56,7 +56,7 @@ s.configure('button1.TButton', background='white', font='helvetica 22')
 font_big = font.Font(family='Calibri', size=64, weight='bold')#define font style
 
 # font untuk intruksi dan button
-font_button = font.Font(family='Helvetica', size=32, weight='bold')
+font_button = font.Font(family='Helvetica', size=22, weight='bold')
 
 # font untuk data
 font_data = font.Font(family='Times New Roman', size =32)
@@ -81,18 +81,23 @@ content.grid(column=0, row=0)
 
 
 # --------Frames--------- #frame2 yang dipakai
-#logo
-frame_logo=ttk.Frame(content, width=lcd_width, style='white.TFrame')
+
+#logo kecil
+frame_logo=ttk.Frame(content, height=lcd_height, width =60, style='white.TFrame')
 # height=logo_size,
-frame_logo.grid(column=0, row=0, columnspan=3)
+frame_logo.grid(column=0, row=0, rowspan=7)
 
-#label
-frame_label=ttk.Frame(content, width=lcd_width, height=lcd_height-tebal_garis_pembatas-40, style='green.TFrame')
-frame_label.grid(column=0, row=1, columnspan=3)
+#logo awal
+frame_awal=ttk.Frame(content, width=tengah, style='green.TFrame')
+frame_awal.grid(column=1, row=0, columnspan=3, sticky='n')
 
-#button
-frame_button=ttk.Frame(content, width=lcd_width, height=40, style='white.TFrame')
-frame_button.grid(column=0, row=2, columnspan=3)
+#isi
+frame_label=ttk.Frame(content, width=tengah, height = lcd_height-60, style='blue.TFrame')
+frame_label.grid(column=1, row=1, rowspan=6, columnspan=3, sticky='n')
+
+#bantuan
+frame_bantuan=ttk.Frame(content, height=lcd_height, width=60, style='blue.TFrame')
+frame_bantuan.grid(column=4, row=0, rowspan=7)
 
 
 #---------Masukin Gambar----------
@@ -125,27 +130,23 @@ def bantu():
     messagebox.showinfo(message='Untuk bantuan silahan hubungi Dartwin 08xxxxxxxxxx')
 
 def mulai():
-    
+
     global logo
-    logo = ttk.Label(frame_logo, image=logo_file, background='white')
+    logo = ttk.Label(frame_awal, image=logo_file, background='white')
     logo.grid(column=0,row=0)
 
     global judul
-    judul = ttk.Label(frame_logo, text='Selamat Datang!', font=font_big, background='white')
+    judul = ttk.Label(frame_awal, text='Selamat Datang!', font=font_big, background='white')
     judul.grid(column=1,row=0)
-
-    global spacing
-    spacing=ttk.Frame(frame_logo, width=space_size, style=tes_spacing+'.TFrame')
-    spacing.grid(column=2, row=0)
     
     global e_mulai
     e_mulai = ttk.Label(frame_label, text="        Silahkan klik tombol mulai\n   lalu tempelkan kartu RFID anda!", width=30, background='blue', font=font_button)
     #e_mulai.configure(anchor="center")
-    e_mulai.grid(column=0, row=0, pady=pady_button, padx=padx_button)
+    e_mulai.grid(column=1, row=1, pady=pady_button, padx=padx_button)
     
     global button_mulai
     button_mulai=ttk.Button(frame_label, text="Mulai", width=10, style='button1.TButton', command= lambda :[RFID.checkId(), s1_mulai()] )
-    button_mulai.grid(column=0,row=1, pady=150, padx=padx_button)
+    button_mulai.grid(column=1,row=2, pady=150, padx=padx_button)
     
 def s1_mulai():
     v_id = "Id = " + str(RFID.getId())
@@ -160,14 +161,16 @@ def s1_mulai():
     judul.grid_remove()
     #Ilangin bagian atas
     
+    frame_awal.config(width=150)
+    
     ##--------Frame Logo----------
     global logoLabel
-    logoLabel = ttk.Label(frame_label, image=logoKecil, background='white')
-    logoLabel.grid(column=0,row=0, sticky='w')
+    logoLabel = ttk.Label(frame_logo, image=logoKecil, background='white')
+    logoLabel.grid(column=0,row=0, sticky='s')
     
     global buttonBantuan
-    buttonBantuan = ttk.Button(frame_label, image=iconBantuan, style='button1.TButton')
-    buttonBantuan.grid(column=2,row=0, sticky='e')
+    buttonBantuan = ttk.Button(frame_bantuan, image=iconBantuan, style='button1.TButton')
+    buttonBantuan.grid(column=2,row=0, sticky='s')
     
     ##---------Frame label----------
     global e_apakah
@@ -319,10 +322,11 @@ def ulang():
 ##----- Event 1 -----#
 
 #frame sisa
+    '''
 fSisa = lcd_height-logo_size-tebal_garis_pembatas-2*pad_garis-2*pady_button-4*10
 frame_button=ttk.Frame(content, width=lcd_width, height=fSisa, style='white.TFrame')
 frame_button.grid(column=0, row=6, columnspan=3)
-
+'''
 mulai()
 
 # ---------Execution----------
