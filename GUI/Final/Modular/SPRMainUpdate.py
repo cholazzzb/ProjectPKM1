@@ -37,7 +37,7 @@ root.wm_attributes('-fullscreen','true') #fullscreen
 #----------Constants-----------
 logo_size=350 #ukuran logo
 lcd_width=1280 #ukuran lcd
-tengah =800
+tengah =1160
 lcd_height=800
 tebal_garis_pembatas=7 #tebal garis ijo
 space_size=100 #ukuran space di kanan untuk estetika, coba ganti tes_spacing dg 'green'
@@ -66,6 +66,7 @@ font_data = font.Font(family='Times New Roman', size =32)
 v_id = '12312312'
 v_nama = 'Nic'
 v_saldo = '75000'
+global v_jumlahBotol
 v_jumlahBotol = '0'
 v_jenisBotol = 'Botol Besar'
 v_saldoTambahan = 'Rp 150'
@@ -83,7 +84,7 @@ content.grid(column=0, row=0)
 # --------Frames--------- #frame2 yang dipakai
 
 #logo kecil
-frame_logo=ttk.Frame(content, height=lcd_height, width =60, style='white.TFrame')
+frame_logo=ttk.Frame(content, height=lcd_height, width =60, style='blue.TFrame')
 # height=logo_size,
 frame_logo.grid(column=0, row=0, rowspan=7)
 
@@ -163,13 +164,21 @@ def s1_mulai():
     
     frame_awal.config(width=150)
     
+    
+    
     ##--------Frame Logo----------
     global logoLabel
-    logoLabel = ttk.Label(frame_logo, image=logoKecil, background='white')
-    logoLabel.grid(column=0,row=0, sticky='s')
+    logoLabel = ttk.Label(frame_logo,
+                          image=logoKecil,
+                          background='red',
+                          anchor="n")
+    logoLabel.grid(column=0,row=0)
     
     global buttonBantuan
-    buttonBantuan = ttk.Button(frame_bantuan, image=iconBantuan, style='button1.TButton')
+    buttonBantuan = ttk.Button(frame_bantuan,
+                               image=iconBantuan,
+                               style='button1.TButton',
+                               command= lambda: bantu())
     buttonBantuan.grid(column=2,row=0, sticky='s')
     
     ##---------Frame label----------
@@ -222,7 +231,7 @@ def tambahLagi():
     label_state2_1.grid(column=1,row=1)
     
     global buttonUdah
-    buttonUdah = ttk.Button(frame_label, text = "Udah", style='button1.TButton', command= lambda: tambah())
+    buttonUdah = ttk.Button(frame_label, text = "Udah", style='button1.TButton', command= lambda: [tambah(), M.tambahBotol()])
     # , delay.after_cancel(delay1())
     buttonUdah.grid(column=2,row=2)
     
